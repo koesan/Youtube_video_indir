@@ -42,7 +42,7 @@ url_entry.place(x=50, y=40)
 url_label = Label(text="URL:")
 url_label.place(x=10, y=40)
 
-kaliteler = [" mp3", " 360p", " 720p", " 1080p"]
+kaliteler = ["mp3", "360p", "720p", "1080p"]
 kalite_combobox = ttk.Combobox(values=kaliteler, state="readonly")
 kalite_combobox.place(x=120, y=70)
 
