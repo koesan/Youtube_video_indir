@@ -3,8 +3,9 @@ from tkinter import *
 from tkinter import ttk
 from pytube import YouTube
 from tkinter import messagebox
+import re
 
-# Video adındaki geçersiz karakterleri temizler
+# Video ismindeki geçersiz kareakterleri temizler
 def sanitize_filename(title):
    
     return re.sub(r'[\\/:*?"<>|]', '_', title)
