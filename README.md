@@ -1,2 +1,6 @@
-# Youtube_video_indir
-Python ile youtubdan video indir
+# Python ile youtubdan video indir
+
+Pytube küütphanesi ile youtubdan video indirme
+
+pip install pytube==15.0.0
+
