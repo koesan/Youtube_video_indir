@@ -4,8 +4,12 @@ from tkinter import ttk
 from pytube import YouTube
 from tkinter import messagebox
 
-def indir():
 
+def sanitize_filename(title):
+   
+    return re.sub(r'[\\/:*?"<>|]', '_', title)
+
+def indir():
     # Girilen 
     url = url_entry.get()
     yt = YouTube(url)
@@ -27,7 +31,18 @@ def indir():
         return
 
     if stream:
-        stream.download(filename="video")
+        # Dosya adı için özel bir isim oluştur
+        if video_kalite == "mp3":
+            dosya_adi = sanitize_filename(yt.title) + ".mp3"  # Videonun adını alıp .mp3 uzantısını ekliyoruz
+        else:
+            dosya_adi = sanitize_filename(yt.title) + ".mp4"  # Video kalitesine göre isim oluşturuyoruz
+
+        # İndirilecek dosyanın tam yolunu oluşturuyoruz
+        dosya_yolu = os.path.join(bulunduğu_dizin, dosya_adi)
+
+        # İndirme işlemi yapılıyor
+        stream.download(filename=dosya_yolu)
+
         messagebox.showinfo("İşlem Tamamlandı", "Video başarıyla indirildi.")
     else:
         messagebox.showerror("Hata", "Seçilen kalitede video bulunamadı.")
